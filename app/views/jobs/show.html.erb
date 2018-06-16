@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag company_img(@job.user.companies[0].logo, 'logo'), width: '100%' %>
+  </div>
+
+  <div class="col-md-9">
+    <h1><%= @job.title %></h1>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Company Name:</th>
+          <td><%= link_to @job.user.companies[0].title, company_path(@job.user.companies[0]) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Date Posted:</th>
+          <td><%= @job.created_at %></td>
+        </tr>
+        <tr>
+          <th scope="row">Type of Job</th>
+          <td><%= @job.job_type.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Job Area</th>
+          <td><%= @job.job_area.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Years of experience:</th>
+          <td><%= @job.experience %></td>
+        </tr>
+        <tr>
+          <th scope="row">Salary range</th>
+          <td><%= @job.salary_min %> - <%= @job.salary_max %></td>
+        </tr>
+        <tr>
+          <th scope="row">Number of hires for this position</th>
+          <td><%= @job.hires %></td>
+        </tr>
+        <tr>
+          <th scope="row">Requires level of Education</th>
+          <td><%= @job.education.title %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <strong>Description: </strong><%= @job.description %>
+  </div>
+</div>
+
+<h5 align="center">Contact: (<%= @job.email %> / <%= @job.address %>)</h5>
+
+<%= link_to 'Edit Job', edit_job_path(@job), class: 'btn btn-primary' if user_signed_in? %>
